@@ -23,7 +23,7 @@ class Potion():
                     temp_dict[(int(potion[0]), int(potion[1]))] = list([potion[2], int(potion[3]), int(potion[4])])
                 else:
                     temp_dict[(int(potion[0][1::]), int(potion[1]))] = list([potion[2], 
-                                (int(potion[3]), int(potion[4])), (int(potion[5]), int(potion[6]))])
+                                int(potion[3]), int(potion[4]), int(potion[5]), int(potion[6])])
 
                 line = potion_file.readline().rstrip()
 
@@ -42,6 +42,10 @@ class Potion():
             if roll in range(min, max+1):
                 p = potion
                 break
-        
-        # I have the key to the potion
-        return f'Potion: {Potion.potion_dict[p][0]}'
+
+        if len(Potion.potion_dict[p]) == 3:
+            return f'Potion: {Potion.potion_dict[p][0]:20}\tXP: {Potion.potion_dict[p][1]:4}\t' + \
+                f'Gold: {Potion.potion_dict[p][2]:4}'
+        else:
+            return f'Potion: {Potion.potion_dict[p][0]:20}\tXP: {Potion.potion_dict[p][1]:4}-{Potion.potion_dict[p][2]:4}\t' + \
+                f'Gold: {Potion.potion_dict[p][3]:4}-{Potion.potion_dict[p][4]:4}'
