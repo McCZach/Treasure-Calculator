@@ -2,9 +2,6 @@ import random
 from datetime import datetime
 
 class Potion():
-    # Key: Tuple - Range of Potion,
-    # Value: List [Name, Tuple - Range of XP, Tuple - Range of Gold]
-    potion_dict = {}
 
     @staticmethod
     def build_table():
