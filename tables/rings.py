@@ -1,11 +1,11 @@
-import tables.master as master
+from tables.master import Item
 
 import random
 from datetime import datetime
 
-class Ring(master.Item):    
+class Ring(Item):    
     FILE_PATH = 'resources/rings.txt'
-    ring_dict = master.Item.build_table(FILE_PATH)
+    ring_dict = Item.build_table(FILE_PATH)
 
     @staticmethod
     def generate_ring():
@@ -20,9 +20,9 @@ class Ring(master.Item):
 
         value = Ring.ring_dict[r]
         if len(value) == 3:
-            return f'Ring: {value[0]:30}XP: {value[1]:<10}' + \
-                f'Gold: {value[2]:<4}\n'
+            return f'Ring: {value[0]:30}XP: {value[1]:<13,}' + \
+                f'Gold: {value[2]:<4,}\n'
         else:
-            return f'Ring: {value[0]:30}XP: {value[1]}-{value[2]:<5}' + \
+            return f'Ring: {value[0]:30}XP: {value[1]}-{value[2]:<8,}' + \
                 f'Gold: {value[3]}-{value[4]}\n'
         

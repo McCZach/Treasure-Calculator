@@ -1,11 +1,11 @@
-import tables.master as master
+from tables.master import Item
 
 import random
 from datetime import datetime
 
-class Potion(master.Item):
+class Potion(Item):
     FILE_PATH = 'resources/potions.txt'
-    potion_dict = master.Item.build_table(FILE_PATH)
+    potion_dict = Item.build_table(FILE_PATH)
 
     @staticmethod
     def generate_potion():
@@ -20,8 +20,8 @@ class Potion(master.Item):
         
         value = Potion.potion_dict[p]
         if len(value) == 3:
-            return f'Potion: {value[0]:28}XP: {value[1]:<10}' + \
+            return f'Potion: {value[0]:28}XP: {value[1]:<13}' + \
                 f'Gold: {value[2]:<4}\n'
         else:
-            return f'Potion: {value[0]:28}XP: {value[1]}-{value[2]:<6}' + \
+            return f'Potion: {value[0]:28}XP: {value[1]}-{value[2]:<9}' + \
                 f'Gold: {value[3]}-{value[4]}\n'
