@@ -41,8 +41,8 @@ class Potion():
                 break
 
         if len(Potion.potion_dict[p]) == 3:
-            return f'Potion: {Potion.potion_dict[p][0]:20}\tXP: {Potion.potion_dict[p][1]:4}\t' + \
-                f'Gold: {Potion.potion_dict[p][2]:4}'
+            return f'Potion: {Potion.potion_dict[p][0]:28}XP: {Potion.potion_dict[p][1]:<10}' + \
+                f'Gold: {Potion.potion_dict[p][2]:<4}\n'
         else:
-            return f'Potion: {Potion.potion_dict[p][0]:20}\tXP: {Potion.potion_dict[p][1]:4}-{Potion.potion_dict[p][2]:4}\t' + \
-                f'Gold: {Potion.potion_dict[p][3]:4}-{Potion.potion_dict[p][4]:4}'
+            return f'Potion: {Potion.potion_dict[p][0]:28}XP: {Potion.potion_dict[p][1]}-{Potion.potion_dict[p][2]:<6}' + \
+                f'Gold: {Potion.potion_dict[p][3]}-{Potion.potion_dict[p][4]}\n'

@@ -1,8 +1,7 @@
-from potions import Potion
+import gui
 
 def main():
-    p = Potion.generate_potion()
-    print(p)
+    app = gui.Application()
 
 if __name__ == '__main__':
     main()
