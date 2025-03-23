@@ -7,7 +7,7 @@ class Potion():
     def build_table():
         temp_dict = {}
         try:
-            potion_file = open('tables/potions.txt', 'r')
+            potion_file = open('resources/potions.txt', 'r')
         except:
             print('Error - Could not open file.')
             return temp_dict

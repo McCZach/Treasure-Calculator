@@ -1,4 +1,4 @@
-from potions import Potion
+from tables.potions import Potion
 import tkinter as tk
 from tkinter import scrolledtext
 
