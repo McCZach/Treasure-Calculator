@@ -1,0 +1,25 @@
+1,10,1 spell,1-4
+11,16,1 spell,1-6
+17,19,1 spell,2-9 (d8 + 1) or 2-7* (d6 + 1)
+20,24,2 spells,1-4
+25,27,2 spells,1-8 or 1-6*
+28,32,3 spells,1-4
+33,35,3 spells,2-9 or 2-7*
+36,39,4 spells,1-6
+40,42,4 spells,1-8 or 1-6*
+43,46,5 spells,1-6
+47,49,5 spells,1-8 or 1-6*
+50,52,6 spells,1-6
+53,54,6 spells,3-8 (d6 + 2) or 3-6* (d4 + 2)
+55,57,7 spells,1-8
+58,59,7 spells,2-9
+60,60,7 spells,4-9 (d6 + 3) or 4-7* (d4 + 3)
+61,62,Protection - Demons,(2500 x.p.)
+63,64,Protection - Devils,(2500 x.p.)
+65,70,Protection - Elementals,(1500 x.p.)
+71,76,Protection - Lycanthropes,(1000 x.p.)
+77,82,Protection - Magic,(1500 x.p.)
+83,87,Protection - Petrification,(2000 x.p.)
+88,92,Protection - Possession,(2000 x.p.)
+93,97,Protection - Undead,(1500 x.p.)
+98,100,Curse**,-

@@ -20,8 +20,8 @@ class Potion(Item):
         
         value = Potion.potion_dict[p]
         if len(value) == 3:
-            return f'Potion: {value[0]:28}XP: {value[1]:<13}' + \
-                f'Gold: {value[2]:<4}\n'
+            return f'Potion: {value[0]:30}XP: {value[1]:<15}' + \
+                f'Gold: {value[2]:<6}\n'
         else:
-            return f'Potion: {value[0]:28}XP: {value[1]}-{value[2]:<9}' + \
+            return f'Potion: {value[0]:30}XP: {value[1]}-{value[2]:<11}' + \
                 f'Gold: {value[3]}-{value[4]}\n'

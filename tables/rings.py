@@ -20,9 +20,9 @@ class Ring(Item):
 
         value = Ring.ring_dict[r]
         if len(value) == 3:
-            return f'Ring: {value[0]:30}XP: {value[1]:<13,}' + \
+            return f'Ring: {value[0]:32}XP: {value[1]:<15,}' + \
                 f'Gold: {value[2]:<4,}\n'
         else:
-            return f'Ring: {value[0]:30}XP: {value[1]}-{value[2]:<8,}' + \
+            return f'Ring: {value[0]:32}XP: {value[1]}-{value[2]:<10,}' + \
                 f'Gold: {value[3]}-{value[4]}\n'
         
