@@ -38,10 +38,11 @@ class Potion():
             if roll in range(min, max+1):
                 p = potion
                 break
-
-        if len(Potion.potion_dict[p]) == 3:
-            return f'Potion: {Potion.potion_dict[p][0]:28}XP: {Potion.potion_dict[p][1]:<10}' + \
-                f'Gold: {Potion.potion_dict[p][2]:<4}\n'
+        
+        value = Potion.potion_dict[p]
+        if len(value) == 3:
+            return f'Potion: {value[0]:28}XP: {value[1]:<10}' + \
+                f'Gold: {value[2]:<4}\n'
         else:
-            return f'Potion: {Potion.potion_dict[p][0]:28}XP: {Potion.potion_dict[p][1]}-{Potion.potion_dict[p][2]:<6}' + \
-                f'Gold: {Potion.potion_dict[p][3]}-{Potion.potion_dict[p][4]}\n'
+            return f'Potion: {value[0]:28}XP: {value[1]}-{value[2]:<6}' + \
+                f'Gold: {value[3]}-{value[4]}\n'

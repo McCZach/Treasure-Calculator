@@ -39,10 +39,11 @@ class Ring():
                 r = ring
                 break
 
-        if len(Ring.ring_dict[r]) == 3:
-            return f'Ring: {Ring.ring_dict[r][0]:30}XP: {Ring.ring_dict[r][1]:<10}' + \
-                f'Gold: {Ring.ring_dict[r][2]:<4}\n'
+        value = Ring.ring_dict[r]
+        if len(value) == 3:
+            return f'Ring: {value[0]:30}XP: {value[1]:<10}' + \
+                f'Gold: {value[2]:<4}\n'
         else:
-            return f'Ring: {Ring.ring_dict[r][0]:30}XP: {Ring.ring_dict[r][1]}-{Ring.ring_dict[r][2]:<5}' + \
-                f'Gold: {Ring.ring_dict[r][3]}-{Ring.ring_dict[r][4]}\n'
+            return f'Ring: {value[0]:30}XP: {value[1]}-{value[2]:<5}' + \
+                f'Gold: {value[3]}-{value[4]}\n'
         
