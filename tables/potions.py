@@ -1,32 +1,11 @@
+import tables.master as master
+
 import random
 from datetime import datetime
 
-class Potion():
-    @staticmethod
-    def build_table():
-        temp_dict = {}
-        try:
-            potion_file = open('resources/potions.txt', 'r')
-        except:
-            print('Error - Could not open file.')
-            return temp_dict
-        else:
-            line = potion_file.readline().rstrip()
-            while line != '':
-                potion = line.split(',')
-
-                if line[0] != '?':
-                    temp_dict[(int(potion[0]), int(potion[1]))] = list([potion[2], int(potion[3]), int(potion[4])])
-                else:
-                    temp_dict[(int(potion[0][1::]), int(potion[1]))] = list([potion[2], 
-                                int(potion[3]), int(potion[4]), int(potion[5]), int(potion[6])])
-
-                line = potion_file.readline().rstrip()
-
-        potion_file.close()
-        return temp_dict
-
-    potion_dict = build_table()
+class Potion(master.Item):
+    FILE_PATH = 'resources/potions.txt'
+    potion_dict = master.Item.build_table(FILE_PATH)
 
     @staticmethod
     def generate_potion():
