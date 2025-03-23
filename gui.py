@@ -1,4 +1,6 @@
 from tables.potions import Potion
+from tables.rings import Ring
+
 import tkinter as tk
 from tkinter import scrolledtext
 
@@ -21,6 +23,10 @@ class Application():
                                            command=lambda: self.display_potion(self.__display_text))
         self.__generate_potion.pack(side='left', padx=5)
 
+        self.__generate_ring = tk.Button(self.__option_frame, text='Generate Ring',
+                                        command=lambda: self.display_ring(self.__display_text))
+        self.__generate_ring.pack(side='left', padx=5)
+
         self.__clear_button = tk.Button(self.__option_frame, text='Clear', 
                                         command=lambda: self.clear_text(self.__display_text))
         self.__clear_button.pack(side='left', padx=5)
@@ -32,3 +38,6 @@ class Application():
 
     def display_potion(self, text_box):
         text_box.insert(tk.END, Potion.generate_potion())
+
+    def display_ring(self, text_box):
+        text_box.insert(tk.END, Ring.generate_ring())

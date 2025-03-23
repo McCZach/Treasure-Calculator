@@ -2,7 +2,6 @@ import random
 from datetime import datetime
 
 class Potion():
-
     @staticmethod
     def build_table():
         temp_dict = {}
