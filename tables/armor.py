@@ -8,7 +8,7 @@ class Armor(Item):
     armor_dict = Item.build_table(FILE_PATH)
 
     @staticmethod
-    def generate_armor():
+    def generate_armor() -> str:
         random.seed(str(datetime.now()))
         roll = random.randint(1, 100)
 

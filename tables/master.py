@@ -1,6 +1,6 @@
 class Item():
     @staticmethod
-    def build_table(file_path: str):
+    def build_table(file_path: str) -> dict:
         data = {}
         try:
             file = open(file_path, 'r')

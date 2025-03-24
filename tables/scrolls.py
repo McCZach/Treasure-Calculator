@@ -3,7 +3,7 @@ from datetime import datetime
 
 class Scroll():
     @staticmethod
-    def build_table():
+    def build_table() -> dict:
         data = {}
         try:
             file = open('resources/scrolls.txt', 'r')
@@ -24,7 +24,7 @@ class Scroll():
     scroll_dict = build_table()
 
     @staticmethod
-    def generate_scroll():
+    def generate_scroll() -> str:
         random.seed(str(datetime.now()))
         roll = random.randint(1, 100)
 

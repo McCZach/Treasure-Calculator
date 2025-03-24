@@ -10,7 +10,7 @@ from tkinter import font
 
 class Application():
     def __init__(self):
-        self.__item_counts = {"Total":0, "Potion":0, "Ring":0, "Scroll":0, "Wand":0,"Armor":0}
+        self.__item_counts = {"Total":0, "Potion":0, "Ring":0, "Scroll":0, "Wand":0, "Armor":0}
 
         self.__main_window = tk.Tk()
         self.__main_window.geometry('1000x800')
@@ -84,7 +84,7 @@ class Application():
         self.__item_labels['Wand'].config(text=f'Number of Wands: {self.__item_counts["Wand"]}')
         self.__item_labels['Armor'].config(text=f'Number of Armor: {self.__item_counts["Armor"]}')
 
-    def display_item(self, generate, name, bg, box):
+    def display_item(self, generate: callable, name: str, bg: str, box: tk.Label) -> None:
         item = generate()
         self.__display_text.config(state=tk.NORMAL)
         self.__display_text.insert(tk.END, item, bg)

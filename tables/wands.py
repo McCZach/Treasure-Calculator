@@ -8,7 +8,7 @@ class Wand(Item):
     wand_dict = Item.build_table(FILE_PATH)
 
     @staticmethod
-    def generate_wand():
+    def generate_wand() -> str:
         random.seed(str(datetime.now()))
         roll = random.randint(1, 100)
 
