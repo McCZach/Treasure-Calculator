@@ -19,4 +19,4 @@ class Wand(Item):
                 break
 
         value = Wand.wand_dict[w]
-        return f'Item: {value[0]:45}XP: {value[1]:<15}Gold: {value[2]:<6}\n'
+        return f'Item: {value[0]:45}XP: {value[1]:<15}Gold: {value[2]}\n'

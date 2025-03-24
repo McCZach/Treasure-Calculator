@@ -2,6 +2,7 @@ from tables.potions import Potion
 from tables.rings import Ring
 from tables.scrolls import Scroll
 from tables.wands import Wand
+from tables.armor import Armor
 
 import tkinter as tk
 from tkinter import scrolledtext
@@ -9,7 +10,7 @@ from tkinter import font
 
 class Application():
     def __init__(self):
-        self.__num_items = 0
+        self.__num_item_total = 0
 
         self.__main_window = tk.Tk()
         self.__main_window.geometry('1000x600')
@@ -28,6 +29,7 @@ class Application():
         self.__display_text.tag_configure('orange_bg', background='#ffb46e', font=self.__display_font)
         self.__display_text.tag_configure('yellow_bg', background='#f8ff6e', font=self.__display_font)
         self.__display_text.tag_configure('green_bg', background='#80ff6e', font=self.__display_font)
+        self.__display_text.tag_configure('blue_bg', background='#6e84ff', font=self.__display_font)
         self.__display_text.config(state=tk.DISABLED)
         self.__display_text.pack()
 
@@ -55,6 +57,10 @@ class Application():
                                         command=lambda: self.display_wand())
         self.__generate_wand.pack(side='left', padx=5)
 
+        self.__generate_armor = tk.Button(self.__option_frame, text='Generate Armor',
+                                        command=lambda: self.display_armor())
+        self.__generate_armor.pack(side='left', padx=5)
+
         self.__clear_button = tk.Button(self.__option_frame, text='Clear', 
                                         command=lambda: self.clear_text())
         self.__clear_button.pack(side='left', padx=5)
@@ -65,6 +71,8 @@ class Application():
         self.__display_text.config(state=tk.NORMAL)
         self.__display_text.delete("1.0", tk.END)
         self.__display_text.config(state=tk.DISABLED)
+        self.__num_item_total = 0
+        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
 
     def display_potion(self):
         potion = Potion.generate_potion()
@@ -72,8 +80,8 @@ class Application():
         self.__display_text.insert(tk.END, potion, 'red_bg')
         self.__display_text.config(state=tk.DISABLED)
 
-        self.__num_items += 1
-        self.__items.config(text=f'Number of Items: {self.__num_items}')
+        self.__num_item_total += 1
+        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
 
     def display_ring(self):
         ring = Ring.generate_ring()
@@ -81,8 +89,8 @@ class Application():
         self.__display_text.insert(tk.END, ring, 'orange_bg')
         self.__display_text.config(state=tk.DISABLED)
 
-        self.__num_items += 1
-        self.__items.config(text=f'Number of Items: {self.__num_items}')
+        self.__num_item_total += 1
+        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
 
     def display_scroll(self):
         scroll = Scroll.generate_scroll()
@@ -90,8 +98,8 @@ class Application():
         self.__display_text.insert(tk.END, scroll, 'yellow_bg')
         self.__display_text.config(state=tk.DISABLED)
 
-        self.__num_items += 1
-        self.__items.config(text=f'Number of Items: {self.__num_items}')
+        self.__num_item_total += 1
+        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
 
     def display_wand(self):
         wand = Wand.generate_wand()
@@ -99,5 +107,14 @@ class Application():
         self.__display_text.insert(tk.END, wand, 'green_bg')
         self.__display_text.config(state=tk.DISABLED)
 
-        self.__num_items += 1
-        self.__items.config(text=f'Number of Items: {self.__num_items}')
+        self.__num_item_total += 1
+        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
+
+    def display_armor(self):
+        armor = Armor.generate_armor()
+        self.__display_text.config(state=tk.NORMAL)
+        self.__display_text.insert(tk.END, armor, 'blue_bg')
+        self.__display_text.config(state=tk.DISABLED)
+
+        self.__num_item_total += 1
+        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
