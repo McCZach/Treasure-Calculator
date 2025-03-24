@@ -35,4 +35,4 @@ class Scroll():
                 break
 
         value = Scroll.scroll_dict[s]
-        return f'Scroll: {value[0]:30}Spell Level Range: {value[1]:<13}\n'
+        return f'Scroll: {value[0]:43}Spell Level Range: {value[1]:<13}\n'

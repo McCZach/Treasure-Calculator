@@ -22,4 +22,4 @@
 83,87,Protection - Petrification,(2000 x.p.)
 88,92,Protection - Possession,(2000 x.p.)
 93,97,Protection - Undead,(1500 x.p.)
-98,100,Curse**,-
+98,100,Curse**,~
