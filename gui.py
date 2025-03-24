@@ -64,23 +64,23 @@ class Application():
 
         # Create Buttons
         self.__generate_potion = tk.Button(self.__option_frame, text='Generate Potion', 
-                                           command=lambda: self.display_potion())
+                                           command=lambda: self.display_item(Potion.generate_potion, 'Potion', 'red_bg', self.__potion_items))
         self.__generate_potion.pack(side='left', padx=5)
 
         self.__generate_ring = tk.Button(self.__option_frame, text='Generate Ring',
-                                        command=lambda: self.display_ring())
+                                        command=lambda: self.display_item(Ring.generate_ring, 'Ring', 'orange_bg', self.__ring_items))
         self.__generate_ring.pack(side='left', padx=5)
 
         self.__generate_scroll = tk.Button(self.__option_frame, text='Generate Scroll',
-                                           command=lambda: self.display_scroll())
+                                           command=lambda: self.display_item(Scroll.generate_scroll, 'Scroll', 'yellow_bg', self.__scroll_items))
         self.__generate_scroll.pack(side='left', padx=5)
 
         self.__generate_wand = tk.Button(self.__option_frame, text='Generate Rod/Staff/Wand',
-                                        command=lambda: self.display_wand())
+                                        command=lambda: self.display_item(Wand.generate_wand, 'Wand', 'green_bg', self.__wand_items))
         self.__generate_wand.pack(side='left', padx=5)
 
         self.__generate_armor = tk.Button(self.__option_frame, text='Generate Armor',
-                                        command=lambda: self.display_armor())
+                                        command=lambda: self.display_item(Armor.generate_armor, 'Armor', 'blue_bg', self.__armor_items))
         self.__generate_armor.pack(side='left', padx=5)
 
         self.__clear_button = tk.Button(self.__option_frame, text='Clear', 
@@ -104,57 +104,13 @@ class Application():
         self.__wand_items.config(text=f'Number of Wands: {self.__item_counts["Wand"]}')
         self.__armor_items.config(text=f'Number of Armor: {self.__item_counts["Armor"]}')
 
-    def display_potion(self):
-        potion = Potion.generate_potion()
+    def display_item(self, generate, name, bg, box):
+        item = generate()
         self.__display_text.config(state=tk.NORMAL)
-        self.__display_text.insert(tk.END, potion, 'red_bg')
+        self.__display_text.insert(tk.END, item, bg)
         self.__display_text.config(state=tk.DISABLED)
 
         self.__item_counts["Total"] += 1
         self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
-        self.__item_counts["Potion"] += 1
-        self.__potion_items.config(text=f'Number of Potions: {self.__item_counts["Potion"]}')
-
-    def display_ring(self):
-        ring = Ring.generate_ring()
-        self.__display_text.config(state=tk.NORMAL)
-        self.__display_text.insert(tk.END, ring, 'orange_bg')
-        self.__display_text.config(state=tk.DISABLED)
-
-        self.__item_counts["Total"] += 1
-        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
-        self.__item_counts["Ring"] += 1
-        self.__ring_items.config(text=f'Number of Rings: {self.__item_counts["Ring"]}')
-
-    def display_scroll(self):
-        scroll = Scroll.generate_scroll()
-        self.__display_text.config(state=tk.NORMAL)
-        self.__display_text.insert(tk.END, scroll, 'yellow_bg')
-        self.__display_text.config(state=tk.DISABLED)
-
-        self.__item_counts["Total"] += 1
-        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
-        self.__item_counts["Scroll"]+= 1
-        self.__scroll_items.config(text=f'Number of Scrolls: {self.__item_counts["Scroll"]}')
-
-    def display_wand(self):
-        wand = Wand.generate_wand()
-        self.__display_text.config(state=tk.NORMAL)
-        self.__display_text.insert(tk.END, wand, 'green_bg')
-        self.__display_text.config(state=tk.DISABLED)
-
-        self.__item_counts["Total"] += 1
-        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
-        self.__item_counts["Wand"] += 1
-        self.__wand_items.config(text=f'Number of Wands: {self.__item_counts["Wand"]}')
-
-    def display_armor(self):
-        armor = Armor.generate_armor()
-        self.__display_text.config(state=tk.NORMAL)
-        self.__display_text.insert(tk.END, armor, 'blue_bg')
-        self.__display_text.config(state=tk.DISABLED)
-
-        self.__item_counts["Total"] += 1
-        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
-        self.__item_counts["Armor"] += 1
-        self.__armor_items.config(text=f'Number of Armor: {self.__item_counts["Armor"]}')
+        self.__item_counts[name] += 1
+        box.config(text=f'Number of {name}: {self.__item_counts[name]}')
