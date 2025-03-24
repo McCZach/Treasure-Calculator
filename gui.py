@@ -62,30 +62,23 @@ class Application():
         self.__armor_items = tk.Label(self.__result_frame)
         self.__armor_items.pack()
 
-        # Create Buttons
-        self.__generate_potion = tk.Button(self.__option_frame, text='Generate Potion', 
-                                           command=lambda: self.display_item(Potion.generate_potion, 'Potion', 'red_bg', self.__potion_items))
-        self.__generate_potion.pack(side='left', padx=5)
+        self.__buttons = {
+            "Potion":tk.Button(self.__option_frame, text='Generate Potion', 
+                    command=lambda: self.display_item(Potion.generate_potion, 'Potion', 'red_bg', self.__potion_items)),
+            "Ring":tk.Button(self.__option_frame, text='Generate Ring',
+                    command=lambda: self.display_item(Ring.generate_ring, 'Ring', 'orange_bg', self.__ring_items)),
+            "Scroll":tk.Button(self.__option_frame, text='Generate Scroll',
+                    command=lambda: self.display_item(Scroll.generate_scroll, 'Scroll', 'yellow_bg', self.__scroll_items)),
+            "Wand":tk.Button(self.__option_frame, text='Generate Rod/Staff/Wand',
+                    command=lambda: self.display_item(Wand.generate_wand, 'Wand', 'green_bg', self.__wand_items)),
+            "Armor":tk.Button(self.__option_frame, text='Generate Armor',
+                    command=lambda: self.display_item(Armor.generate_armor, 'Armor', 'blue_bg', self.__armor_items)),
+            "Clear":tk.Button(self.__option_frame, text='Clear', 
+                    command=lambda: self.clear_text())
+        }
 
-        self.__generate_ring = tk.Button(self.__option_frame, text='Generate Ring',
-                                        command=lambda: self.display_item(Ring.generate_ring, 'Ring', 'orange_bg', self.__ring_items))
-        self.__generate_ring.pack(side='left', padx=5)
-
-        self.__generate_scroll = tk.Button(self.__option_frame, text='Generate Scroll',
-                                           command=lambda: self.display_item(Scroll.generate_scroll, 'Scroll', 'yellow_bg', self.__scroll_items))
-        self.__generate_scroll.pack(side='left', padx=5)
-
-        self.__generate_wand = tk.Button(self.__option_frame, text='Generate Rod/Staff/Wand',
-                                        command=lambda: self.display_item(Wand.generate_wand, 'Wand', 'green_bg', self.__wand_items))
-        self.__generate_wand.pack(side='left', padx=5)
-
-        self.__generate_armor = tk.Button(self.__option_frame, text='Generate Armor',
-                                        command=lambda: self.display_item(Armor.generate_armor, 'Armor', 'blue_bg', self.__armor_items))
-        self.__generate_armor.pack(side='left', padx=5)
-
-        self.__clear_button = tk.Button(self.__option_frame, text='Clear', 
-                                        command=lambda: self.clear_text())
-        self.__clear_button.pack(side='left', padx=5)
+        for button in self.__buttons:
+            self.__buttons[button].pack(side='left', padx=5)
 
         tk.mainloop()
 
