@@ -10,12 +10,14 @@ from tkinter import font
 
 class Application():
     def __init__(self):
-        self.__num_item_total = 0
-        self.__num_potion = 0
-        self.__num_ring = 0
-        self.__num_scroll = 0
-        self.__num_wand = 0
-        self.__num_armor = 0
+        self.__item_counts = {
+            "Total":0,
+            "Potion":0,
+            "Ring":0,
+            "Scroll":0,
+            "Wand":0,
+            "Armor":0,
+        }
 
         self.__main_window = tk.Tk()
         self.__main_window.geometry('1000x800')
@@ -91,18 +93,16 @@ class Application():
         self.__display_text.config(state=tk.NORMAL)
         self.__display_text.delete("1.0", tk.END)
         self.__display_text.config(state=tk.DISABLED)
-        self.__num_item_total = 0
-        self.__num_potion = 0
-        self.__num_ring = 0
-        self.__num_scroll = 0
-        self.__num_wand = 0
-        self.__num_armor = 0
-        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
-        self.__potion_items.config(text=f'Number of Potions: {self.__num_potion}')
-        self.__ring_items.config(text=f'Number of Rings: {self.__num_ring}')
-        self.__scroll_items.config(text=f'Number of Scrolls: {self.__num_scroll}')
-        self.__wand_items.config(text=f'Number of Wands: {self.__num_wand}')
-        self.__armor_items.config(text=f'Number of Armor: {self.__armor_items}')
+
+        for count in self.__item_counts:
+            self.__item_counts[count] = 0
+
+        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
+        self.__potion_items.config(text=f'Number of Potions: {self.__item_counts["Potion"]}')
+        self.__ring_items.config(text=f'Number of Rings: {self.__item_counts["Ring"]}')
+        self.__scroll_items.config(text=f'Number of Scrolls: {self.__item_counts["Scroll"]}')
+        self.__wand_items.config(text=f'Number of Wands: {self.__item_counts["Wand"]}')
+        self.__armor_items.config(text=f'Number of Armor: {self.__item_counts["Armor"]}')
 
     def display_potion(self):
         potion = Potion.generate_potion()
@@ -110,10 +110,10 @@ class Application():
         self.__display_text.insert(tk.END, potion, 'red_bg')
         self.__display_text.config(state=tk.DISABLED)
 
-        self.__num_item_total += 1
-        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
-        self.__num_potion += 1
-        self.__potion_items.config(text=f'Number of Potions: {self.__num_potion}')
+        self.__item_counts["Total"] += 1
+        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
+        self.__item_counts["Potion"] += 1
+        self.__potion_items.config(text=f'Number of Potions: {self.__item_counts["Potion"]}')
 
     def display_ring(self):
         ring = Ring.generate_ring()
@@ -121,10 +121,10 @@ class Application():
         self.__display_text.insert(tk.END, ring, 'orange_bg')
         self.__display_text.config(state=tk.DISABLED)
 
-        self.__num_item_total += 1
-        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
-        self.__num_ring += 1
-        self.__ring_items.config(text=f'Number of Rings: {self.__num_ring}')
+        self.__item_counts["Total"] += 1
+        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
+        self.__item_counts["Ring"] += 1
+        self.__ring_items.config(text=f'Number of Rings: {self.__item_counts["Ring"]}')
 
     def display_scroll(self):
         scroll = Scroll.generate_scroll()
@@ -132,10 +132,10 @@ class Application():
         self.__display_text.insert(tk.END, scroll, 'yellow_bg')
         self.__display_text.config(state=tk.DISABLED)
 
-        self.__num_item_total += 1
-        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
-        self.__num_scroll += 1
-        self.__scroll_items.config(text=f'Number of Scrolls: {self.__num_scroll}')
+        self.__item_counts["Total"] += 1
+        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
+        self.__item_counts["Scroll"]+= 1
+        self.__scroll_items.config(text=f'Number of Scrolls: {self.__item_counts["Scroll"]}')
 
     def display_wand(self):
         wand = Wand.generate_wand()
@@ -143,10 +143,10 @@ class Application():
         self.__display_text.insert(tk.END, wand, 'green_bg')
         self.__display_text.config(state=tk.DISABLED)
 
-        self.__num_item_total += 1
-        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
-        self.__num_wand += 1
-        self.__wand_items.config(text=f'Number of Wands: {self.__num_wand}')
+        self.__item_counts["Total"] += 1
+        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
+        self.__item_counts["Wand"] += 1
+        self.__wand_items.config(text=f'Number of Wands: {self.__item_counts["Wand"]}')
 
     def display_armor(self):
         armor = Armor.generate_armor()
@@ -154,7 +154,7 @@ class Application():
         self.__display_text.insert(tk.END, armor, 'blue_bg')
         self.__display_text.config(state=tk.DISABLED)
 
-        self.__num_item_total += 1
-        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
-        self.__num_armor += 1
-        self.__armor_items.config(text=f'Number of Armor: {self.__num_armor}')
+        self.__item_counts["Total"] += 1
+        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
+        self.__item_counts["Armor"] += 1
+        self.__armor_items.config(text=f'Number of Armor: {self.__item_counts["Armor"]}')
