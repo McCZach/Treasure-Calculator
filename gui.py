@@ -44,35 +44,29 @@ class Application():
         self.__result_frame = tk.Frame(self.__main_window)
         self.__result_frame.pack()
 
-        self.__total_items = tk.Label(self.__result_frame)
-        self.__total_items.pack()
+        self.__item_labels = {
+            "Total":tk.Label(self.__result_frame),
+            "Potion":tk.Label(self.__result_frame),
+            "Ring":tk.Label(self.__result_frame),
+            "Scroll":tk.Label(self.__result_frame),
+            "Wand":tk.Label(self.__result_frame),
+            "Armor":tk.Label(self.__result_frame),
+        }
 
-        self.__potion_items = tk.Label(self.__result_frame)
-        self.__potion_items.pack()
-
-        self.__ring_items = tk.Label(self.__result_frame)
-        self.__ring_items.pack()
-
-        self.__scroll_items = tk.Label(self.__result_frame)
-        self.__scroll_items.pack()
-
-        self.__wand_items = tk.Label(self.__result_frame)
-        self.__wand_items.pack()
-
-        self.__armor_items = tk.Label(self.__result_frame)
-        self.__armor_items.pack()
+        for label in self.__item_labels:
+            self.__item_labels[label].pack()
 
         self.__buttons = {
             "Potion":tk.Button(self.__option_frame, text='Generate Potion', 
-                    command=lambda: self.display_item(Potion.generate_potion, 'Potion', 'red_bg', self.__potion_items)),
+                    command=lambda: self.display_item(Potion.generate_potion, 'Potion', 'red_bg', self.__item_labels['Potion'])),
             "Ring":tk.Button(self.__option_frame, text='Generate Ring',
-                    command=lambda: self.display_item(Ring.generate_ring, 'Ring', 'orange_bg', self.__ring_items)),
+                    command=lambda: self.display_item(Ring.generate_ring, 'Ring', 'orange_bg', self.__item_labels['Ring'])),
             "Scroll":tk.Button(self.__option_frame, text='Generate Scroll',
-                    command=lambda: self.display_item(Scroll.generate_scroll, 'Scroll', 'yellow_bg', self.__scroll_items)),
+                    command=lambda: self.display_item(Scroll.generate_scroll, 'Scroll', 'yellow_bg',self.__item_labels['Scroll'])),
             "Wand":tk.Button(self.__option_frame, text='Generate Rod/Staff/Wand',
-                    command=lambda: self.display_item(Wand.generate_wand, 'Wand', 'green_bg', self.__wand_items)),
+                    command=lambda: self.display_item(Wand.generate_wand, 'Wand', 'green_bg', self.__item_labels['Wand'])),
             "Armor":tk.Button(self.__option_frame, text='Generate Armor',
-                    command=lambda: self.display_item(Armor.generate_armor, 'Armor', 'blue_bg', self.__armor_items)),
+                    command=lambda: self.display_item(Armor.generate_armor, 'Armor', 'blue_bg', self.__item_labels['Armor'])),
             "Clear":tk.Button(self.__option_frame, text='Clear', 
                     command=lambda: self.clear_text())
         }
@@ -103,7 +97,7 @@ class Application():
         self.__display_text.insert(tk.END, item, bg)
         self.__display_text.config(state=tk.DISABLED)
 
-        self.__item_counts["Total"] += 1
-        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
+        self.__item_counts['Total'] += 1
+        self.__item_labels['Total'].config(text=f'Number of Items: {self.__item_counts['Total']}')
         self.__item_counts[name] += 1
         box.config(text=f'Number of {name}: {self.__item_counts[name]}')
