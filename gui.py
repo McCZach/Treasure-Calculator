@@ -10,14 +10,7 @@ from tkinter import font
 
 class Application():
     def __init__(self):
-        self.__item_counts = {
-            "Total":0,
-            "Potion":0,
-            "Ring":0,
-            "Scroll":0,
-            "Wand":0,
-            "Armor":0,
-        }
+        self.__item_counts = {"Total":0, "Potion":0, "Ring":0, "Scroll":0, "Wand":0,"Armor":0}
 
         self.__main_window = tk.Tk()
         self.__main_window.geometry('1000x800')
@@ -84,12 +77,12 @@ class Application():
         for count in self.__item_counts:
             self.__item_counts[count] = 0
 
-        self.__total_items.config(text=f'Number of Items: {self.__item_counts["Total"]}')
-        self.__potion_items.config(text=f'Number of Potions: {self.__item_counts["Potion"]}')
-        self.__ring_items.config(text=f'Number of Rings: {self.__item_counts["Ring"]}')
-        self.__scroll_items.config(text=f'Number of Scrolls: {self.__item_counts["Scroll"]}')
-        self.__wand_items.config(text=f'Number of Wands: {self.__item_counts["Wand"]}')
-        self.__armor_items.config(text=f'Number of Armor: {self.__item_counts["Armor"]}')
+        self.__item_labels['Total'].config(text=f'Number of Items: {self.__item_counts["Total"]}')
+        self.__item_labels['Potion'].config(text=f'Number of Potions: {self.__item_counts["Potion"]}')
+        self.__item_labels['Ring'].config(text=f'Number of Rings: {self.__item_counts["Ring"]}')
+        self.__item_labels['Scroll'].config(text=f'Number of Scrolls: {self.__item_counts["Scroll"]}')
+        self.__item_labels['Wand'].config(text=f'Number of Wands: {self.__item_counts["Wand"]}')
+        self.__item_labels['Armor'].config(text=f'Number of Armor: {self.__item_counts["Armor"]}')
 
     def display_item(self, generate, name, bg, box):
         item = generate()
