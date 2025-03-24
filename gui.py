@@ -11,9 +11,14 @@ from tkinter import font
 class Application():
     def __init__(self):
         self.__num_item_total = 0
+        self.__num_potion = 0
+        self.__num_ring = 0
+        self.__num_scroll = 0
+        self.__num_wand = 0
+        self.__num_armor = 0
 
         self.__main_window = tk.Tk()
-        self.__main_window.geometry('1000x600')
+        self.__main_window.geometry('1000x800')
         self.__main_window.title('Treasure Generator')
 
         # Setup Application
@@ -37,8 +42,23 @@ class Application():
         self.__result_frame = tk.Frame(self.__main_window)
         self.__result_frame.pack()
 
-        self.__items = tk.Label(self.__result_frame)
-        self.__items.pack()
+        self.__total_items = tk.Label(self.__result_frame)
+        self.__total_items.pack()
+
+        self.__potion_items = tk.Label(self.__result_frame)
+        self.__potion_items.pack()
+
+        self.__ring_items = tk.Label(self.__result_frame)
+        self.__ring_items.pack()
+
+        self.__scroll_items = tk.Label(self.__result_frame)
+        self.__scroll_items.pack()
+
+        self.__wand_items = tk.Label(self.__result_frame)
+        self.__wand_items.pack()
+
+        self.__armor_items = tk.Label(self.__result_frame)
+        self.__armor_items.pack()
 
         # Create Buttons
         self.__generate_potion = tk.Button(self.__option_frame, text='Generate Potion', 
@@ -72,7 +92,17 @@ class Application():
         self.__display_text.delete("1.0", tk.END)
         self.__display_text.config(state=tk.DISABLED)
         self.__num_item_total = 0
-        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__num_potion = 0
+        self.__num_ring = 0
+        self.__num_scroll = 0
+        self.__num_wand = 0
+        self.__num_armor = 0
+        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__potion_items.config(text=f'Number of Potions: {self.__num_potion}')
+        self.__ring_items.config(text=f'Number of Rings: {self.__num_ring}')
+        self.__scroll_items.config(text=f'Number of Scrolls: {self.__num_scroll}')
+        self.__wand_items.config(text=f'Number of Wands: {self.__num_wand}')
+        self.__armor_items.config(text=f'Number of Armor: {self.__armor_items}')
 
     def display_potion(self):
         potion = Potion.generate_potion()
@@ -81,7 +111,9 @@ class Application():
         self.__display_text.config(state=tk.DISABLED)
 
         self.__num_item_total += 1
-        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__num_potion += 1
+        self.__potion_items.config(text=f'Number of Potions: {self.__num_potion}')
 
     def display_ring(self):
         ring = Ring.generate_ring()
@@ -90,7 +122,9 @@ class Application():
         self.__display_text.config(state=tk.DISABLED)
 
         self.__num_item_total += 1
-        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__num_ring += 1
+        self.__ring_items.config(text=f'Number of Rings: {self.__num_ring}')
 
     def display_scroll(self):
         scroll = Scroll.generate_scroll()
@@ -99,7 +133,9 @@ class Application():
         self.__display_text.config(state=tk.DISABLED)
 
         self.__num_item_total += 1
-        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__num_scroll += 1
+        self.__scroll_items.config(text=f'Number of Scrolls: {self.__num_scroll}')
 
     def display_wand(self):
         wand = Wand.generate_wand()
@@ -108,7 +144,9 @@ class Application():
         self.__display_text.config(state=tk.DISABLED)
 
         self.__num_item_total += 1
-        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__num_wand += 1
+        self.__wand_items.config(text=f'Number of Wands: {self.__num_wand}')
 
     def display_armor(self):
         armor = Armor.generate_armor()
@@ -117,4 +155,6 @@ class Application():
         self.__display_text.config(state=tk.DISABLED)
 
         self.__num_item_total += 1
-        self.__items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__total_items.config(text=f'Number of Items: {self.__num_item_total}')
+        self.__num_armor += 1
+        self.__armor_items.config(text=f'Number of Armor: {self.__num_armor}')
