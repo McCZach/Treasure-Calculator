@@ -1,8 +1,13 @@
+import os
+import sys
+
 class Item():
     @staticmethod
     def build_table(file_path: str) -> dict:
         data = {}
         try:
+            if hasattr(sys, '_MEIPASS'):
+                file_path = os.path.join(sys._MEIPASS, file_path)
             file = open(file_path, 'r')
         except:
             print('Error - Could not open file.')

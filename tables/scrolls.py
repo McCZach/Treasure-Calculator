@@ -1,4 +1,6 @@
+import os
 import random
+import sys
 from datetime import datetime
 
 class Scroll():
@@ -6,7 +8,11 @@ class Scroll():
     def build_table() -> dict:
         data = {}
         try:
-            file = open('resources/scrolls.txt', 'r')
+            file_path = 'resources/scrolls.txt'
+            if hasattr(sys, '_MEIPASS'):
+                file_path = os.path.join(sys._MEIPASS, file_path)
+
+            file = open(file_path, 'r')
         except:
             print('Error - Could not open file.')
             return data
