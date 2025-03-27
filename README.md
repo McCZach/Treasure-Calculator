@@ -11,5 +11,3 @@ Tables Implemented: <br>
 5. ARMOR AND SHIELD
 6. SWORDS
 ```
-<br>
-![image of application](https://github.com/user-attachments/assets/fc905195-c267-4e83-962f-8fccc2cd380b)
