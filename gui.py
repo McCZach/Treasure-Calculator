@@ -3,6 +3,7 @@ from tables.rings import Ring
 from tables.scrolls import Scroll
 from tables.wands import Wand
 from tables.armor import Armor
+from tables.sword import Sword
 
 import tkinter as tk
 from tkinter import scrolledtext
@@ -27,7 +28,7 @@ class Application():
 
         #****************************************************************************************
 
-        self.counts = {'Total':0, 'Potion':0, 'Ring':0, 'Scroll':0, 'Wand':0, 'Armor':0}
+        self.counts = {'Total':0, 'Potion':0, 'Ring':0, 'Scroll':0, 'Wand':0, 'Armor':0, 'Sword':0}
 
         self.create_buttons()
         self.create_text()
@@ -49,6 +50,8 @@ class Application():
                     command=lambda: self.display_item(Wand.generate_wand, 'Wand', 'green_bg', self.labels['Wand'])),
             "Armor":tk.Button(self.option_frame, text='Generate Armor',
                     command=lambda: self.display_item(Armor.generate_armor, 'Armor', 'blue_bg', self.labels['Armor'])),
+            "Sword":tk.Button(self.option_frame, text='Generate Sword', 
+                    command=lambda: self.display_item(Sword.generate_sword, 'Sword', 'purple_bg', self.labels['Sword'])),
             "Clear":tk.Button(self.option_frame, text='Clear', 
                     command=lambda: self.clear_text())
         }
@@ -63,7 +66,8 @@ class Application():
             'Ring':tk.StringVar(),
             'Scroll':tk.StringVar(),
             'Wand':tk.StringVar(),
-            'Armor':tk.StringVar()
+            'Armor':tk.StringVar(),
+            'Sword':tk.StringVar()
         }
 
         self.labels = {
@@ -72,11 +76,16 @@ class Application():
             'Ring':tk.Label(self.result_frame, textvariable=self.label_vars['Ring']),
             'Scroll':tk.Label(self.result_frame, textvariable=self.label_vars['Scroll']),
             'Wand':tk.Label(self.result_frame, textvariable=self.label_vars['Wand']),
-            'Armor':tk.Label(self.result_frame, textvariable=self.label_vars['Armor'])
+            'Armor':tk.Label(self.result_frame, textvariable=self.label_vars['Armor']),
+            'Sword':tk.Label(self.result_frame, textvariable=self.label_vars['Sword'])
         }
 
         for label in self.labels:
-            self.labels[label].pack()
+            if label != 'Total':
+                self.labels[label].pack()
+            else:
+                self.labels[label].pack(side='left', padx=10)
+                
 
     def create_text(self):
         self.display_text = scrolledtext.ScrolledText(self.display_frame, height=30, width=100)
@@ -86,7 +95,8 @@ class Application():
             'orange_bg':'#ffb46e',
             'yellow_bg':'#f8ff6e',
             'green_bg':'#80ff6e',
-            'blue_bg':'#6e84ff'
+            'blue_bg':'#6e84ff',
+            'purple_bg':'#f86eff'
         }
 
         for key, value in self.display_tags.items():
