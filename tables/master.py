@@ -17,11 +17,13 @@ class Item():
             while line != '':
                 info = line.split(',')
 
-                if line[0] != '?':
+                if line[0] != '?' and line[0] != '!':
                     data[(int(info[0]), int(info[1]))] = list([info[2], int(info[3]), int(info[4])])
-                else:
+                elif line[0] == '?':
                     data[(int(info[0][1::]), int(info[1]))] = list([info[2], 
                                     int(info[3]), int(info[4]), int(info[5]), int(info[6])])
+                else:
+                    data[(int(info[0][1::]), int(info[1]))] = list([info[2], info[3]])
 
                 line = file.readline().rstrip()
         

@@ -1,33 +1,11 @@
-import os
+from tables.armor import Item
+
 import random
-import sys
 from datetime import datetime
 
-class Scroll():
-    @staticmethod
-    def build_table() -> dict:
-        data = {}
-        try:
-            file_path = 'resources/scrolls.txt'
-            if hasattr(sys, '_MEIPASS'):
-                file_path = os.path.join(sys._MEIPASS, file_path)
-
-            file = open(file_path, 'r')
-        except:
-            print('Error - Could not open file.')
-            return data
-        else:
-            line = file.readline().rstrip()
-            while line != '':
-                info = line.split(',')
-                data[(int(info[0]), int(info[1]))] = list([info[2], info[3]])
-
-                line = file.readline().rstrip()
-
-        file.close()
-        return data
-
-    scroll_dict = build_table()
+class Scroll(Item):
+    FILE_PATH = 'resources/scrolls.txt'
+    scroll_dict = Item.build_table(FILE_PATH)
 
     @staticmethod
     def generate_scroll() -> str:
